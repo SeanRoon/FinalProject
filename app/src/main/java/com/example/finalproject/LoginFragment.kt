@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class FirebaseFragment : Fragment() {
+class LoginFragment : Fragment() {
 
     lateinit var dbRef : DatabaseReference
     lateinit var fAuth: FirebaseAuth
@@ -29,13 +29,12 @@ class FirebaseFragment : Fragment() {
         fAuth = Firebase.auth
         val username = binding.editTextTextEmailAddress.text.toString()
         binding.registerButton.setOnClickListener(){
-            firebaseSignUp(username, )
+
         }
 
         return rootView
     }
 
     fun firebaseSignUp(){
-        fAuth.createUserWithEmailAndPassword()
     }
 }
