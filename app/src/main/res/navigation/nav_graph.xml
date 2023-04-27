@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeScreenFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="com.example.finalproject.HomeScreenFragment"
@@ -65,4 +65,13 @@
         android:name="com.example.finalproject.AddWaterFragment"
         android:label="fragment_add_water"
         tools:layout="@layout/fragment_add_water" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.finalproject.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
 </navigation>
