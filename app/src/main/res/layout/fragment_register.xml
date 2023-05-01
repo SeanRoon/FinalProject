@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="15dp"
+    android:background="#87CEEB"
     tools:context=".RegisterFragment">
 
     <TextView
@@ -52,6 +53,12 @@
     </Button>
 
     <TextView
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="20sp"
+        android:id="@+id/login_now"
+        android:text="Click to login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

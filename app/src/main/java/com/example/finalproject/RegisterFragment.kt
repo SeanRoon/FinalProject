@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -27,6 +29,9 @@ class RegisterFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_register, container, false)
         mAuth = Firebase.auth
+        binding.loginNow.setOnClickListener(){
+            rootView.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
         binding.btnRegister.setOnClickListener(){
             binding.progressBar.visibility = View.VISIBLE
             val email = binding.emailText.text.toString()
