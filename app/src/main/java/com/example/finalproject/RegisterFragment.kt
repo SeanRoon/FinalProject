@@ -13,21 +13,32 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.finalproject.databinding.FragmentLoginBinding
 import com.example.finalproject.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class RegisterFragment : Fragment() {
+
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
     private lateinit var mAuth: FirebaseAuth
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = mAuth.currentUser
+        if (currentUser != null) {
+            binding.root.findNavController().navigate(R.id.action_registerFragment_to_homeScreenFragment)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_register, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        val rootView = binding.root
         mAuth = Firebase.auth
         binding.loginNow.setOnClickListener(){
             rootView.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)

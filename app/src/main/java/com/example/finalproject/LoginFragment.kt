@@ -1,6 +1,7 @@
 package com.example.finalproject
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,15 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private lateinit var mAuth: FirebaseAuth
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser = mAuth.currentUser
+        if (currentUser != null) {
+            binding.root.findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +49,17 @@ class LoginFragment : Fragment() {
             if (binding.passwordText.text.toString().equals("")){
                 Toast.makeText(activity, "Enter password", Toast.LENGTH_SHORT).show()
             }
+            mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener() { task ->
+                    binding.progressBar.visibility = View.GONE
+                    if (task.isSuccessful) {
+                        Toast.makeText(activity, "Login Successful", Toast.LENGTH_SHORT).show()
+                        rootView.findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
+                    } else {
+                        Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_SHORT,).show()
+                    }
+                }
+
         }
         return rootView
     }
