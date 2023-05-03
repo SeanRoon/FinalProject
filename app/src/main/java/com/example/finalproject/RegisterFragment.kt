@@ -59,6 +59,7 @@ class RegisterFragment : Fragment() {
                     binding.progressBar.visibility = View.GONE
                     if (task.isSuccessful) {
                         Toast.makeText(activity, "Account created:", Toast.LENGTH_SHORT,).show()
+                        rootView.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                     } else {
                         Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_SHORT,).show()
                     }

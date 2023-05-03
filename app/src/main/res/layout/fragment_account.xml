@@ -7,6 +7,16 @@
     tools:context=".AccountFragment">
 
     <TextView
+        android:id="@+id/height_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Height:"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/sex_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/sex_text_view" />
+
+    <TextView
         android:id="@+id/sex_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,18 +38,65 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:text="Male"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/sex_text_view"
-        app:layout_constraintEnd_toStartOf="@+id/switch1"
-        app:layout_constraintStart_toEndOf="@+id/sex_text_view" />
+        app:layout_constraintEnd_toStartOf="@+id/switch1" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:text="Female"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/switch1"
         app:layout_constraintStart_toEndOf="@+id/switch1" />
+
+    <EditText
+        android:id="@+id/user_height_in_feet"
+        android:layout_width="80dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/height_text_view"
+        tools:layout_editor_absoluteX="145dp" />
+
+    <TextView
+        android:id="@+id/Feet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ft"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/user_height_in_feet"
+        app:layout_constraintStart_toEndOf="@+id/user_height_in_feet" />
+
+    <EditText
+        android:id="@+id/use_height_in_inches"
+        android:layout_width="80dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/user_height_in_feet"
+        app:layout_constraintStart_toEndOf="@+id/Feet" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="in"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/use_height_in_inches"
+        app:layout_constraintStart_toEndOf="@+id/use_height_in_inches" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="261dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
