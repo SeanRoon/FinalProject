@@ -1,11 +1,10 @@
 package com.example.finalproject
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.finalproject.databinding.FragmentHomeScreenBinding
 import com.example.finalproject.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -35,5 +34,16 @@ class HomeScreenFragment : Fragment() {
 
         }
         return rootView
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController()
+        ) || super.onOptionsItemSelected(item)
     }
 }
