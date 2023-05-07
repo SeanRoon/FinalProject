@@ -44,19 +44,19 @@ class LoginFragment : Fragment() {
             val password = binding.passwordText.text.toString()
 
             if (binding.emailText.text.toString().equals("")){
-                Toast.makeText(activity, "Enter email", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Enter email", Toast.LENGTH_LONG).show()
             }
             if (binding.passwordText.text.toString().equals("")){
-                Toast.makeText(activity, "Enter password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Enter password", Toast.LENGTH_LONG).show()
             }
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener() { task ->
                     binding.progressBar.visibility = View.GONE
                     if (task.isSuccessful) {
-                        Toast.makeText(activity, "Login Successful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "Login Successful", Toast.LENGTH_LONG).show()
                         rootView.findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
                     } else {
-                        Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_SHORT,).show()
+                        Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_LONG,).show()
                     }
                 }
 
