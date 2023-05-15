@@ -31,6 +31,10 @@ class AccountFragment : Fragment() {
         else{
 
         }
+        val userWeight = binding.userWeight.text
+        val userTargetWeight = binding.userTargetWeight.text
+        val userHeightInFeet = binding.userHeightInFeet.text
+        val userHeightInInches = (userHeightInFeet * 12) + binding.userHeightInInches.text
         binding.logoutButton.setOnClickListener(){
             FirebaseAuth.getInstance().signOut()
             rootView.findNavController().navigate(R.id.action_homeScreenFragment_to_loginFragment)
