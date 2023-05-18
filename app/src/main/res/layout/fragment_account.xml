@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#87CEEB"
+    android:id="@+id/accountFragment"
     tools:context=".AccountFragment">
 
     <TextView
@@ -75,7 +76,7 @@
         app:layout_constraintStart_toEndOf="@+id/user_height_in_feet" />
 
     <EditText
-        android:id="@+id/use_height_in_inches"
+        android:id="@+id/user_height_in_inches"
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -90,8 +91,8 @@
         android:layout_height="wrap_content"
         android:text="@string/in"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/use_height_in_inches"
-        app:layout_constraintStart_toEndOf="@+id/use_height_in_inches" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/user_height_in_inches"
+        app:layout_constraintStart_toEndOf="@+id/user_height_in_inches" />
 
     <Button
         android:id="@+id/logout_button"
