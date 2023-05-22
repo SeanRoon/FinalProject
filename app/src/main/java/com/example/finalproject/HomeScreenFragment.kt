@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.finalproject.databinding.FragmentHomeScreenBinding
-import com.example.finalproject.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+
 
 class HomeScreenFragment : Fragment() {
 
@@ -33,17 +31,18 @@ class HomeScreenFragment : Fragment() {
         else{
 
         }
+        setHasOptionsMenu(true)
         return rootView
     }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu, menu)
+        inflater.inflate(R.menu.options_menu, menu)
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(
-            item,
-            requireView().findNavController()
-        ) || super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return NavigationUI.onNavDestinationSelected(
+//            item,
+//            requireView().findNavController()
+//        ) || super.onOptionsItemSelected(item)
+//    }
 }
