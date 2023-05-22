@@ -18,11 +18,7 @@ class AddFoodFragment : Fragment() {
     ): View? {
         _binding = FragmentAddFoodBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        binding.submitButton.setOnClickListener(){
-            val food1 = binding.caloriesFood.text.toString()
-            val cal = binding.caloriesNumber.text.toString()
-            Toast.makeText(activity, food1 + cal, Toast.LENGTH_LONG).show()
-        }
+
         return rootView
     }
 }
