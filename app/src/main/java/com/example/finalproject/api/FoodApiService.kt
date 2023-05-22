@@ -5,13 +5,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
-private const val QUERY_STRING = "android/volumes?q" +
+
+private const val QUERY_STRING = "trackapi.nutritionix.com/v2" +
         "&maxResults=5"
 
-private const val BASE_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
+private const val BASE_URL = "https://trackapi.nutritionix.com/v2/search/instant"
 private val retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(ScalarsConverterFactory.create()).build()
 
-interface BookApiService {
+interface FoodApiService {
     @GET(QUERY_STRING)
     fun getFoodRequest(): Call<String>
 }

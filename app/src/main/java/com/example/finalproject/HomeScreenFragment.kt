@@ -33,6 +33,7 @@ class HomeScreenFragment : Fragment() {
         else{
 
         }
+        setHasOptionsMenu(true)
         return rootView
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
