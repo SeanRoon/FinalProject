@@ -45,20 +45,26 @@ class LoginFragment : Fragment() {
 
             if (binding.emailText.text.toString().equals("")){
                 Toast.makeText(activity, "Enter email", Toast.LENGTH_LONG).show()
+                binding.progressBar.visibility = View.GONE
             }
-            if (binding.passwordText.text.toString().equals("")){
+            else if (binding.passwordText.text.toString().equals("")){
                 Toast.makeText(activity, "Enter password", Toast.LENGTH_LONG).show()
+                binding.progressBar.visibility = View.GONE
             }
-            mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener() { task ->
-                    binding.progressBar.visibility = View.GONE
-                    if (task.isSuccessful) {
-                        Toast.makeText(activity, "Login Successful", Toast.LENGTH_LONG).show()
-                        rootView.findNavController().navigate(R.id.action_loginFragment_to_homeScreenFragment)
-                    } else {
-                        Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_LONG,).show()
+            else {
+                mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener() { task ->
+                        binding.progressBar.visibility = View.GONE
+                        if (task.isSuccessful) {
+                            Toast.makeText(activity, "Login Successful", Toast.LENGTH_LONG).show()
+                            rootView.findNavController()
+                                .navigate(R.id.action_loginFragment_to_homeScreenFragment)
+                        } else {
+                            Toast.makeText(activity, "Authentication failed.", Toast.LENGTH_LONG,)
+                                .show()
+                        }
                     }
-                }
+            }
 
         }
         return rootView
