@@ -5,8 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
-
-private const val QUERY_STRING = "trackapi.nutritionix.com/v2" +
+private const val QUERY_STRING = "?query=" +
         "&maxResults=5"
 
 private const val BASE_URL = "https://trackapi.nutritionix.com/v2/search/instant"
