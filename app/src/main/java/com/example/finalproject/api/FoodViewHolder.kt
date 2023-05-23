@@ -9,7 +9,13 @@ class FoodViewHolder (val binding: ListItemBinding):
 
     private lateinit var currentFood: Food
 
-    fun bindBook(food: Food){
+//    init {
+//        binding.root.setOnClickListener(){
+//
+//        }
+//    }
+
+    fun bindFood(food: Food){
         currentFood = food
         binding.foodName.text = currentFood.name
         binding.calories.text = currentFood.calories.toString()

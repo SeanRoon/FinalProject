@@ -14,11 +14,11 @@ class FoodViewModel: ViewModel() {
     private val _response = MutableLiveData<List<Food>>()
     val response: LiveData<List<Food>>
         get() = _response
-    private val _request = MutableLiveData<String>()
-    val request: LiveData<String>
-        get() = _request
+//    private val _request = MutableLiveData<String>()
+//    val request: LiveData<String>
+//        get() = _request
 
-    fun getBooks(){
+    fun getFoods(){
         val request = FoodApi.foodAPI.getFoodRequest()
         request.enqueue(object: Callback<FoodResponse> {
             override fun onFailure(call: Call<FoodResponse>, t: Throwable) {
@@ -26,7 +26,20 @@ class FoodViewModel: ViewModel() {
             }
 
             override fun onResponse(call: Call<FoodResponse>, response: Response<FoodResponse>) {
-                TODO("Not yet implemented")
+                var listOfFoodsFetched = mutableListOf<Food>()
+
+                val foodResponse: FoodResponse? = response.body()
+                val foodItemsList = foodResponse?.foodItemList ?: listOf()
+
+                for(foodItem in foodItemsList){
+                    val name = foodItem.name ?: ""
+                    val servingSize = foodItem.servingSize ?: ""
+                    val calories = foodItem.calories
+                    val brandName = foodItem.brandName ?: ""
+                    val newBook = Book(title, subtitle, authors, url)
+                    listOfBooksFetched.add(newBook)
+                }
+                _response.value = listOfBooksFetched
             }
         })
     }
