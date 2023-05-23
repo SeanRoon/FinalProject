@@ -29,13 +29,13 @@
                 app:layout_editor_absoluteY="16dp"
                 app:trackColor="#C5ADE1"
                 app:trackCornerRadius="8dp"
-                app:trackThickness="18dp"></com.google.android.material.progressindicator.CircularProgressIndicator>
+                app:trackThickness="18dp" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="295.5"
+                android:text="@string/_295_5"
                 android:textColor="#FF6750A4"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -44,13 +44,13 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/circularProgressIndicator"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed"></TextView>
+                app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="of 1200 kcal"
+                android:text="@string/of_1200_kcal"
                 android:textColor="#C5ADE1"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/circularProgressIndicator"

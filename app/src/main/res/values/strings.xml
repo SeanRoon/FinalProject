@@ -20,4 +20,12 @@
     <string name="click_to_register">Click to register</string>
     <string name="register">Register</string>
     <string name="click_to_login">Click to login</string>
+    <string name="name">Name</string>
+    <string name="calories">Calories</string>
+    <string name="sex">Sex:</string>
+    <string name="save">Save</string>
+    <string name="what_did_you_eat">What did you eat?</string>
+    <string name="search">Search</string>
+    <string name="of_1200_kcal">of 1200 kcal</string>
+    <string name="_295_5">295.5</string>
 </resources>

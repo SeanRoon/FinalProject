@@ -11,8 +11,7 @@ class FoodViewHolder (val binding: ListItemBinding):
 
     fun bindBook(food: Food){
         currentFood = food
-//        binding.Title.text = currentBook.title
-//        binding.Subtitle.text = currentBook.subtitle
-//        binding.author.text = currentBook.authors
+        binding.foodName.text = currentFood.name
+        binding.calories.text = currentFood.calories.toString()
     }
 }
