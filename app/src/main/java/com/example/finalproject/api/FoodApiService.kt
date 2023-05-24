@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 private const val QUERY_STRING = "?query=" +
-        "&maxResults=5"
+        "&maxResults=3"
 
 private const val BASE_URL = "https://trackapi.nutritionix.com/v2/search/instant"
 private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()

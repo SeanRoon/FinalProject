@@ -10,62 +10,24 @@
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
-            android:id="@+id/action_homeScreenFragment_to_breakfastFragment"
-            app:destination="@id/breakfastFragment" />
-        <action
-            android:id="@+id/action_homeScreenFragment_to_lunchFragment"
-            app:destination="@id/lunchFragment" />
-        <action
-            android:id="@+id/action_homeScreenFragment_to_dinnerFragment"
-            app:destination="@id/dinnerFragment" />
-        <action
             android:id="@+id/action_homeScreenFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
         <action
             android:id="@+id/action_homeScreenFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/breakfastFragment"
-        android:name="com.example.finalproject.BreakfastFragment"
-        android:label="fragment_breakfast"
-        tools:layout="@layout/fragment_breakfast" >
         <action
-            android:id="@+id/action_breakfastFragment_to_addFoodFragment"
+            android:id="@+id/action_homeScreenFragment_to_addFoodFragment"
             app:destination="@id/addFoodFragment" />
-        <action
-            android:id="@+id/action_breakfastFragment_to_addWaterFragment"
-            app:destination="@id/addWaterFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/lunchFragment"
-        android:name="com.example.finalproject.LunchFragment"
-        android:label="fragment_lunch"
-        tools:layout="@layout/fragment_lunch" >
-        <action
-            android:id="@+id/action_lunchFragment_to_addFoodFragment"
-            app:destination="@id/addFoodFragment" />
-        <action
-            android:id="@+id/action_lunchFragment_to_addWaterFragment"
-            app:destination="@id/addWaterFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/dinnerFragment"
-        android:name="com.example.finalproject.DinnerFragment"
-        android:label="fragment_dinner"
-        tools:layout="@layout/fragment_dinner" >
-        <action
-            android:id="@+id/action_dinnerFragment_to_addFoodFragment"
-            app:destination="@id/addFoodFragment" />
-        <action
-            android:id="@+id/action_dinnerFragment_to_addWaterFragment"
-            app:destination="@id/addWaterFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
         android:name="com.example.finalproject.AddFoodFragment"
         android:label="fragment_add_food"
-        tools:layout="@layout/fragment_add_food" />
+        tools:layout="@layout/fragment_add_food" >
+        <action
+            android:id="@+id/action_addFoodFragment_to_findFoodFragment"
+            app:destination="@id/findFoodFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addWaterFragment"
         android:name="com.example.finalproject.AddWaterFragment"
@@ -109,5 +71,14 @@
         <action
             android:id="@+id/action_accountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findFoodFragment"
+        android:name="com.example.finalproject.FindFoodFragment"
+        android:label="fragment_find_food"
+        tools:layout="@layout/fragment_find_food" >
+        <action
+            android:id="@+id/action_findFoodFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
     </fragment>
 </navigation>

@@ -34,12 +34,12 @@ class FoodViewModel: ViewModel() {
                 for(foodItem in foodItemsList){
                     val name = foodItem.name ?: ""
                     val servingSize = foodItem.servingSize ?: ""
-                    val calories = foodItem.calories
+                    val calories = foodItem.calories ?: 0
                     val brandName = foodItem.brandName ?: ""
-                    val newBook = Book(title, subtitle, authors, url)
-                    listOfBooksFetched.add(newBook)
+                    val newFood = Food(name, servingSize, calories, brandName)
+                    listOfFoodsFetched.add(newFood)
                 }
-                _response.value = listOfBooksFetched
+                _response.value = listOfFoodsFetched
             }
         })
     }
