@@ -8,13 +8,13 @@ class FoodResponse {
 }
 class FoodItems {
     @Json(name = "food_name")
-    var name: String? = ""
+    var foodName: String? = ""
 
     @Json(name = "serving_unit")
-    var servingSize: String? = ""
+    var servingUnit: String? = ""
 
     @Json(name = "nf_calories")
-    var calories: Int? = 0
+    var nfCalories: Int? = 0
 
     @Json(name = "brand_name")
     var brandName: String? = ""

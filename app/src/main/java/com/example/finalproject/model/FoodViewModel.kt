@@ -1,11 +1,11 @@
-package com.example.finalproject.api
+package com.example.finalproject.model
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.finalproject.Food
 import com.example.finalproject.FoodApi
+import com.example.finalproject.api.FoodResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,12 +14,12 @@ class FoodViewModel: ViewModel() {
     private val _response = MutableLiveData<List<Food>>()
     val response: LiveData<List<Food>>
         get() = _response
-//    private val _request = MutableLiveData<String>()
-//    val request: LiveData<String>
-//        get() = _request
+    private val _request = MutableLiveData<String>()
+    val request: LiveData<String>
+        get() = _request
 
-    fun getFoods(){
-        val request = FoodApi.foodAPI.getFoodRequest()
+    fun getFoods(userSearch: String){
+        val request = FoodApi.foodAPI.getFoodRequest(userSearch,true, true)
         request.enqueue(object: Callback<FoodResponse> {
             override fun onFailure(call: Call<FoodResponse>, t: Throwable) {
                 Log.d("RESPONSE", "failure: " + t.message)
@@ -32,11 +32,11 @@ class FoodViewModel: ViewModel() {
                 val foodItemsList = foodResponse?.foodItemList ?: listOf()
 
                 for(foodItem in foodItemsList){
-                    val name = foodItem.name ?: ""
-                    val servingSize = foodItem.servingSize ?: ""
-                    val calories = foodItem.calories ?: 0
+                    val foodName = foodItem.foodName ?: ""
+                    val servingUnit = foodItem.servingUnit ?: ""
+                    val nfCalories = foodItem.nfCalories ?: 0
                     val brandName = foodItem.brandName ?: ""
-                    val newFood = Food(name, servingSize, calories, brandName)
+                    val newFood = Food(foodName, servingUnit, nfCalories, brandName)
                     listOfFoodsFetched.add(newFood)
                 }
                 _response.value = listOfFoodsFetched

@@ -1,7 +1,7 @@
-package com.example.finalproject.api
+package com.example.finalproject.recyclerview
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalproject.Food
+import com.example.finalproject.model.Food
 import com.example.finalproject.databinding.ListItemBinding
 
 class FoodViewHolder (val binding: ListItemBinding):
@@ -17,7 +17,7 @@ class FoodViewHolder (val binding: ListItemBinding):
 
     fun bindFood(food: Food){
         currentFood = food
-        binding.foodName.text = currentFood.name
-        binding.calories.text = currentFood.calories.toString()
+        binding.foodName.text = currentFood.foodName
+        binding.calories.text = currentFood.nfCalories.toString()
     }
 }

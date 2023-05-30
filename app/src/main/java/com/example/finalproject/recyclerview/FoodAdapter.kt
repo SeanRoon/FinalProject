@@ -1,9 +1,9 @@
-package com.example.finalproject.api
+package com.example.finalproject.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalproject.Food
+import com.example.finalproject.model.Food
 import com.example.finalproject.databinding.ListItemBinding
 
 class FoodAdapter (val foodList: List<Food>) : RecyclerView.Adapter<FoodViewHolder>() {

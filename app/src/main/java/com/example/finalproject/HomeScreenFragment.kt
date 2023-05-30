@@ -32,6 +32,9 @@ class HomeScreenFragment : Fragment() {
 
         }
         setHasOptionsMenu(true)
+        binding.addFoodButton.setOnClickListener(){
+            rootView.findNavController().navigate(R.id.action_homeScreenFragment_to_addFoodFragment)
+        }
         return rootView
     }
 
