@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.finalproject.databinding.FragmentAccountBinding
+import com.example.finalproject.model.FoodViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -19,6 +22,7 @@ class AccountFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
     lateinit var dbRef: DatabaseReference
+    private val viewModel: FoodViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -36,14 +40,11 @@ class AccountFragment : Fragment() {
 
         }
         binding.saveButton.setOnClickListener(){
+            val heightInInches = (binding.userHeightInFeet.text.toString().toInt() * 12) + binding.userHeightInInches.text.toString().toInt()
             if(binding.genderSwitch.isChecked)
-                    dbRef.child(user.uid).child("gender").push().setValue("Female")
+                viewModel.setAccountInformation("female", heightInInches, binding.userWeight.text.toString().toInt(), binding.userTargetWeight.text.toString().toInt())
             else
-                    dbRef.child(user.uid).child("gender").push().setValue("Male")
-            dbRef.child(user.uid).child("heightInFeet").push().setValue(binding.userHeightInFeet.text.toString().toInt())
-            dbRef.child(user.uid).child("heightInInches").push().setValue(binding.userHeightInInches.text.toString().toInt())
-            dbRef.child(user.uid).child("currentWeight").push().setValue(binding.userWeight.text.toString().toInt())
-            dbRef.child(user.uid).child("targetWeight").push().setValue(binding.userTargetWeight.text.toString().toInt())
+                viewModel.setAccountInformation("male", heightInInches, binding.userWeight.text.toString().toInt(), binding.userTargetWeight.text.toString().toInt())
         }
         binding.logoutButton.setOnClickListener(){
             FirebaseAuth.getInstance().signOut()

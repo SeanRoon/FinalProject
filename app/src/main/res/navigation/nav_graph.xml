@@ -69,13 +69,4 @@
             android:id="@+id/action_accountFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/findFoodFragment"
-        android:name="com.example.finalproject.FindFoodFragment"
-        android:label="fragment_find_food"
-        tools:layout="@layout/fragment_find_food" >
-        <action
-            android:id="@+id/action_findFoodFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment" />
-    </fragment>
 </navigation>

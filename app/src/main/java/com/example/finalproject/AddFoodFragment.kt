@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
@@ -16,7 +17,7 @@ import com.example.finalproject.recyclerview.FoodAdapter
 class AddFoodFragment : Fragment() {
     private var _binding: FragmentAddFoodBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: FoodViewModel by viewModels()
+    private val viewModel: FoodViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

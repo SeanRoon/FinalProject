@@ -6,6 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.finalproject.FoodApi
 import com.example.finalproject.api.FoodResponse
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,9 +17,9 @@ class FoodViewModel: ViewModel() {
     private val _response = MutableLiveData<List<Food>>()
     val response: LiveData<List<Food>>
         get() = _response
-    private val _request = MutableLiveData<String>()
-    val request: LiveData<String>
-        get() = _request
+    private lateinit var user: FirebaseUser
+    private lateinit var auth: FirebaseAuth
+    lateinit var dbRef: DatabaseReference
 
     fun getFoods(userSearch: String){
         val request = FoodApi.foodAPI.getFoodRequest(userSearch,true, true)
@@ -42,5 +45,11 @@ class FoodViewModel: ViewModel() {
                 _response.value = listOfFoodsFetched
             }
         })
+    }
+    fun setAccountInformation(sex: String, heightInInches: Int, currentWeight: Int, goalWeight: Int){
+        dbRef.child(user.uid).child("gender").push().setValue(sex)
+        dbRef.child(user.uid).child("heightInInches").push().setValue(heightInInches)
+        dbRef.child(user.uid).child("currentWeight").push().setValue(currentWeight)
+        dbRef.child(user.uid).child("targetWeight").push().setValue(goalWeight)
     }
 }

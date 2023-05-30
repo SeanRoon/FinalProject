@@ -3,9 +3,12 @@ package com.example.finalproject
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.finalproject.databinding.FragmentHomeScreenBinding
+import com.example.finalproject.model.FoodViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -16,7 +19,6 @@ class HomeScreenFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
