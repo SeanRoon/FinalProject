@@ -19,6 +19,7 @@ class HomeScreenFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
+    private val viewModel: FoodViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +37,12 @@ class HomeScreenFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.addFoodButton.setOnClickListener(){
             rootView.findNavController().navigate(R.id.action_homeScreenFragment_to_addFoodFragment)
+        }
+        viewModel.totalCalories.observe(viewLifecycleOwner){
+            //set totalCalories on ui
+        }
+        viewModel.caloriesEaten.observe(viewLifecycleOwner){
+            //set caloriesEaten on ui
         }
         return rootView
     }

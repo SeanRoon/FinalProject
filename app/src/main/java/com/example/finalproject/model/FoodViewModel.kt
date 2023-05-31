@@ -18,8 +18,13 @@ class FoodViewModel: ViewModel() {
     val response: LiveData<List<Food>>
         get() = _response
     private lateinit var user: FirebaseUser
-    private lateinit var auth: FirebaseAuth
     lateinit var dbRef: DatabaseReference
+    private var _totalCalories = MutableLiveData<Int>()
+    val totalCalories: LiveData<Int>
+        get() = _totalCalories
+    private val _caloriesEaten = MutableLiveData<Int>()
+    val caloriesEaten: LiveData<Int>
+        get() = _caloriesEaten
 
     fun getFoods(userSearch: String){
         val request = FoodApi.foodAPI.getFoodRequest(userSearch,true, true)

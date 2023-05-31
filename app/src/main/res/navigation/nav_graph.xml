@@ -23,11 +23,7 @@
         android:id="@+id/addFoodFragment"
         android:name="com.example.finalproject.AddFoodFragment"
         android:label="fragment_add_food"
-        tools:layout="@layout/fragment_add_food" >
-        <action
-            android:id="@+id/action_addFoodFragment_to_findFoodFragment"
-            app:destination="@id/findFoodFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_food" />
     <fragment
         android:id="@+id/addWaterFragment"
         android:name="com.example.finalproject.AddWaterFragment"
