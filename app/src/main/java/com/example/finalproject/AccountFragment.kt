@@ -40,11 +40,14 @@ class AccountFragment : Fragment() {
 
         }
         binding.saveButton.setOnClickListener(){
+            val weight = binding.userWeight.text.toString().toInt()
+            val goalWeight = binding.userTargetWeight.text.toString().toInt()
             val heightInInches = (binding.userHeightInFeet.text.toString().toInt() * 12) + binding.userHeightInInches.text.toString().toInt()
             if(binding.genderSwitch.isChecked)
-                viewModel.setAccountInformation("female", heightInInches, binding.userWeight.text.toString().toInt(), binding.userTargetWeight.text.toString().toInt())
+                viewModel.setAccountInformation("female", heightInInches, weight, goalWeight)
             else
-                viewModel.setAccountInformation("male", heightInInches, binding.userWeight.text.toString().toInt(), binding.userTargetWeight.text.toString().toInt())
+                viewModel.setAccountInformation("male", heightInInches, weight, goalWeight)
+            viewModel.setTotalCalories(weight * 15)
         }
         binding.logoutButton.setOnClickListener(){
             FirebaseAuth.getInstance().signOut()

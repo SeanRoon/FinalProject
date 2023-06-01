@@ -39,7 +39,7 @@ class HomeScreenFragment : Fragment() {
             rootView.findNavController().navigate(R.id.action_homeScreenFragment_to_addFoodFragment)
         }
         viewModel.totalCalories.observe(viewLifecycleOwner){
-            //set totalCalories on ui
+            binding.totalCalories.text = viewModel.totalCalories.value.toString()
         }
         viewModel.caloriesEaten.observe(viewLifecycleOwner){
             //set caloriesEaten on ui
