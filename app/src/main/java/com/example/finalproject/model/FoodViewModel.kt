@@ -55,10 +55,10 @@ class FoodViewModel: ViewModel() {
         _totalCalories.value = calories
     }
 
-    fun setAccountInformation(sex: String, heightInInches: Int, currentWeight: Int, goalWeight: Int){
-        dbRef.child(user.uid).child("gender").push().setValue(sex)
-        dbRef.child(user.uid).child("heightInInches").push().setValue(heightInInches)
-        dbRef.child(user.uid).child("currentWeight").push().setValue(currentWeight)
-        dbRef.child(user.uid).child("targetWeight").push().setValue(goalWeight)
-    }
+//    fun setAccountInformation(sex: String, heightInInches: Int, currentWeight: Int, goalWeight: Int){
+//        dbRef.child(user.uid).child("gender").push().setValue(sex)
+//        dbRef.child(user.uid).child("heightInInches").push().setValue(heightInInches)
+//        dbRef.child(user.uid).child("currentWeight").push().setValue(currentWeight)
+//        dbRef.child(user.uid).child("targetWeight").push().setValue(goalWeight)
+//    }
 }

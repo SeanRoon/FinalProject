@@ -10,13 +10,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="275dp"
-        tools:layout_editor_absoluteY="35dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/calories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calories" />
 
     <TextView
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/name1"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,9 +28,11 @@
         android:id="@+id/calories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="@string/calories1"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        tools:layout_editor_absoluteX="93dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/food_name" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -42,6 +46,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="15dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/food_name"
+        app:layout_constraintStart_toStartOf="@+id/serving_size" />
 </androidx.constraintlayout.widget.ConstraintLayout>
