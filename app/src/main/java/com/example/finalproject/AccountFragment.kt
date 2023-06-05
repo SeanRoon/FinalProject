@@ -48,12 +48,11 @@ class AccountFragment : Fragment() {
 //            val weight = binding.userWeight.text.toString().toInt()
             val goalWeight = binding.userTargetWeight.text.toString().toInt()
             dbRef.child(userEmail!!).get().addOnSuccessListener {
-                val caloriesEaten = it.child("caloriesEaten").value.toString().toInt()
-                if (caloriesEaten == null){
-                    viewModel.saveData(goalWeight * 15, 0)
+                if (it.child("caloriesEaten").exists()){
+                    viewModel.saveData(goalWeight * 15, it.child("caloriesEaten").value.toString().toInt())
                 }
                 else
-                    viewModel.saveData(goalWeight * 15, caloriesEaten)
+                    viewModel.saveData(goalWeight * 15, 0)
             }
             rootView.findNavController().navigate(R.id.action_accountFragment_to_homeScreenFragment)
         }

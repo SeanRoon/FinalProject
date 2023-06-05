@@ -1,5 +1,6 @@
 package com.example.finalproject
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -73,29 +74,33 @@ class HomeScreenFragment : Fragment() {
         return rootView
     }
 
-    override fun onStart() {
-        super.onStart()
+    @SuppressLint("SuspiciousIndentation")
+    override fun onResume() {
+        super.onResume()
         auth = FirebaseAuth.getInstance()
         user = auth.currentUser!!
         dbRef = FirebaseDatabase.getInstance().getReference("Users")
         val userEmail = user.email?.substring(0, user.email?.length?.minus(10) ?: 0)
         dbRef.child(userEmail!!).get().addOnSuccessListener {
-            val calsEaten = it.child("caloriesEaten").value.toString().toInt()
-            val totalCals = it.child("totalCalories").value.toString().toInt()
-            binding.caloriesEaten.text = calsEaten.toString()
-            binding.totalCalories.text = totalCals.toString()
-            val totalDub = totalCals.toDouble()
-            val eatenDub = calsEaten.toDouble()
-                if(eatenDub != 0.0) {
+            var calsEaten: Int
+            var totalCals: Int
+            if (it.child("caloriesEaten").exists() and it.child("totalCalories").exists()) {
+                calsEaten = it.child("caloriesEaten").value.toString().toInt()
+                totalCals = it.child("totalCalories").value.toString().toInt()
+                binding.caloriesEaten.text = calsEaten.toString()
+                binding.totalCalories.text = totalCals.toString()
+                val totalDub = totalCals.toDouble()
+                val eatenDub = calsEaten.toDouble()
+                if (eatenDub != 0.0) {
                     val progress = eatenDub / totalDub
                     binding.circularProgressIndicator.progress = ((progress * 100)).toInt()
                     binding.linearProgressIndicator.progress = ((progress * 100)).toInt()
-                }
-                else
-                {
+                } else {
                     binding.circularProgressIndicator.progress = 0
                     binding.linearProgressIndicator.progress = 0
                 }
+            }
+
         }
     }
 
