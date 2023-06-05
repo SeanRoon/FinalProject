@@ -12,10 +12,11 @@
         android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="#87CEEB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -56,25 +57,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textColor="#C5ADE1"
+                android:textColor="@color/white"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/circularProgressIndicator"
                 app:layout_constraintEnd_toEndOf="@+id/circularProgressIndicator"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/circularProgressIndicator"
                 app:layout_constraintTop_toBottomOf="@+id/calories_eaten" />
-
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:progress="15"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circularProgressIndicator"
-                app:trackCornerRadius="8dp"
-                app:trackThickness="8dp">
-
-            </com.google.android.material.progressindicator.LinearProgressIndicator>
 
             <!--                app:trackColor=""-->
             <!--                app:indicatorColor=""-->
@@ -87,12 +77,36 @@
         android:id="@+id/add_food_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="@string/add_food"
+        app:layout_constraintBottom_toTopOf="@+id/reset_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="70dp"
+        android:text="reset calories"
+        app:layout_constraintBottom_toTopOf="@+id/linearProgressIndicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/linearProgressIndicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:progress="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
-        app:layout_constraintVertical_bias="0.482" />
+        app:trackCornerRadius="8dp"
+        app:trackThickness="8dp">
+
+    </com.google.android.material.progressindicator.LinearProgressIndicator>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

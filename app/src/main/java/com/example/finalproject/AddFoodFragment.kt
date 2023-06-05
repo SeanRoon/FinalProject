@@ -33,6 +33,9 @@ class AddFoodFragment : Fragment() {
                 binding.recyclerView.adapter = myAdapter
             })
         }
+        viewModel.caloriesEaten.observe(viewLifecycleOwner){
+            val x = 1
+        }
 
         return rootView
     }

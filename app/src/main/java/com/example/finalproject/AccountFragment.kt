@@ -13,6 +13,7 @@ import com.example.finalproject.model.FoodViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -31,26 +32,29 @@ class AccountFragment : Fragment() {
     ): View? {
         _binding = FragmentAccountBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        dbRef = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
         user = auth.currentUser!!
+        dbRef = FirebaseDatabase.getInstance().getReference("Users")
+        val userEmail = user.email?.substring(0, user.email?.length?.minus(10) ?: 0)
         if (user == null)
             rootView.findNavController().navigate(R.id.action_homeScreenFragment_to_loginFragment)
         else{
 
         }
         binding.saveButton.setOnClickListener(){
-            val weight = binding.userWeight.text.toString().toInt()
+//            val gender  = binding.genderSwitch.isActivated
+//            val heightInFeet = binding.userHeightInFeet.toString().toInt()
+//            val heightInches = binding.userHeightInInches.toString().toInt()
+//            val weight = binding.userWeight.text.toString().toInt()
             val goalWeight = binding.userTargetWeight.text.toString().toInt()
-            val heightInInches = (binding.userHeightInFeet.text.toString().toInt() * 12) + binding.userHeightInInches.text.toString().toInt()
-            if(binding.genderSwitch.isChecked)
-                dbRef.child(user.uid).child("gender").push().setValue("female")
-            else
-                dbRef.child(user.uid).child("gender").push().setValue("male")
-            dbRef.child(user.uid).child("heightInInches").push().setValue(heightInInches)
-            dbRef.child(user.uid).child("currentWeight").push().setValue(weight)
-            dbRef.child(user.uid).child("targetWeight").push().setValue(goalWeight)
-            viewModel.setTotalCalories(goalWeight * 15)
+            dbRef.child(userEmail!!).get().addOnSuccessListener {
+                val caloriesEaten = it.child("caloriesEaten").value.toString().toInt()
+                if (caloriesEaten == null){
+                    viewModel.saveData(goalWeight * 15, 0)
+                }
+                else
+                    viewModel.saveData(goalWeight * 15, caloriesEaten)
+            }
             rootView.findNavController().navigate(R.id.action_accountFragment_to_homeScreenFragment)
         }
         binding.logoutButton.setOnClickListener(){

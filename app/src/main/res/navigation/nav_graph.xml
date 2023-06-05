@@ -23,12 +23,11 @@
         android:id="@+id/addFoodFragment"
         android:name="com.example.finalproject.AddFoodFragment"
         android:label="fragment_add_food"
-        tools:layout="@layout/fragment_add_food" />
-    <fragment
-        android:id="@+id/addWaterFragment"
-        android:name="com.example.finalproject.AddWaterFragment"
-        android:label="fragment_add_water"
-        tools:layout="@layout/fragment_add_water" />
+        tools:layout="@layout/fragment_add_food" >
+        <action
+            android:id="@+id/action_addFoodFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.finalproject.LoginFragment"
@@ -52,6 +51,9 @@
         <action
             android:id="@+id/action_registerFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"

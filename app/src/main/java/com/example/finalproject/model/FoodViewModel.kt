@@ -5,10 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.finalproject.FoodApi
+import com.example.finalproject.User
 import com.example.finalproject.api.FoodResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,12 +20,13 @@ class FoodViewModel: ViewModel() {
     private val _response = MutableLiveData<List<Food>>()
     val response: LiveData<List<Food>>
         get() = _response
+    private lateinit var auth: FirebaseAuth
     private lateinit var user: FirebaseUser
     lateinit var dbRef: DatabaseReference
     private var _totalCalories = MutableLiveData<Int>()
     val totalCalories: LiveData<Int>
         get() = _totalCalories
-    private val _caloriesEaten = MutableLiveData<Int>()
+    private var _caloriesEaten = MutableLiveData<Int>()
     val caloriesEaten: LiveData<Int>
         get() = _caloriesEaten
 
@@ -53,6 +57,34 @@ class FoodViewModel: ViewModel() {
     }
     fun setTotalCalories(calories: Int){
         _totalCalories.value = calories
+    }
+    fun updateCaloriesEaten(calories: Int){
+        _caloriesEaten.value = _caloriesEaten.value?.plus((calories))
+    }
+    fun setCaloriesEaten(calories: Int){
+        _caloriesEaten.value = calories
+    }
+    fun saveData(totalCalories: Int, caloriesEaten: Int){
+        dbRef = FirebaseDatabase.getInstance().getReference("Users")
+        auth = FirebaseAuth.getInstance()
+        user = auth.currentUser!!
+        dbRef = FirebaseDatabase.getInstance().getReference("Users")
+        val userEmail = user.email?.substring(0, user.email?.length?.minus(10) ?: 0)
+        val userInfo = User(totalCalories, caloriesEaten)
+        if (userEmail != null) {
+            dbRef.child(userEmail).setValue(userInfo)
+        }
+    }
+    fun reset(){
+        auth = FirebaseAuth.getInstance()
+        user = auth.currentUser!!
+        dbRef = FirebaseDatabase.getInstance().getReference("Users")
+        val userEmail = user.email?.substring(0, user.email?.length?.minus(10) ?: 0)
+        dbRef.child(userEmail!!).get().addOnSuccessListener {
+            val totalCalories = it.child("totalCalories").value.toString().toInt()
+            val userInfo = mapOf<String, Int>("totalCalories" to totalCalories, "caloriesEaten" to 0)
+            dbRef.child(userEmail).updateChildren(userInfo)
+        }
     }
 
 //    fun setAccountInformation(sex: String, heightInInches: Int, currentWeight: Int, goalWeight: Int){
